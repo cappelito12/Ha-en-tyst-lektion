@@ -19,7 +19,7 @@ app.post('/api/chat', async (req, res) => {
 
 // Funktion för att anropa OpenAI API
 async function getOpenAIResponse(userMessage) {
-    const openaiApiKey = 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;
+    const openaiApiKey = 'YOUR_OPENAI_API_KEY'; // Ersätt med din riktiga API-nyckel
     const apiUrl = 'https://api.openai.com/v1/engines/davinci-codex/completions';
 
     try {
