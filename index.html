@@ -3,120 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basketkastningsspel</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #87CEEB;
-        }
-
-        canvas {
-            border: 5px solid #8B4513;
-            background-color: #32CD32;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-    </style>
+    <title>Chatbot</title>
 </head>
 <body>
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div>
+        <h1>Chatbot</h1>
+        <div id="chat-container"></div>
+        <input type="text" id="user-input" placeholder="Skriv ditt meddelande...">
+        <button onclick="sendMessage()">Skicka</button>
+    </div>
 
     <script>
-        var canvas = document.getElementById('gameCanvas');
-        var ctx = canvas.getContext('2d');
+        async function sendMessage() {
+            const userMessage = document.getElementById('user-input').value;
+            const chatContainer = document.getElementById('chat-container');
 
-        var player = {
-            x: canvas.width / 2 - 30,
-            y: canvas.height - 100,
-            width: 60,
-            height: 100,
-            image: new Image()
-        };
+            // Visa användarens meddelande i chattfönstret
+            chatContainer.innerHTML += `<p><strong>Du:</strong> ${userMessage}</p>`;
 
-        var ball = {
-            x: canvas.width / 2,
-            y: canvas.height - 120,
-            radius: 20,
-            color: '#FFD700',
-            speed: 5,
-            dx: 2,
-            dy: -2,
-            image: new Image()
-        };
+            // Anropa servern för att få ett svar från OpenAI
+            const response = await getServerResponse(userMessage);
 
-        player.image.src = 'basket_player.png'; // Ange sökvägen till din basket spelare bild
-        ball.image.src = 'basketball.png'; // Ange sökvägen till din basketboll bild
+            // Visa botens svar i chattfönstret
+            chatContainer.innerHTML += `<p><strong>Boten:</strong> ${response}</p>`;
 
-        function drawPlayer() {
-            ctx.drawImage(player.image, player.x, player.y, player.width, player.height);
+            // Rensa användarens inputfält
+            document.getElementById('user-input').value = '';
         }
 
-        function drawBall() {
-            ctx.drawImage(ball.image, ball.x - ball.radius, ball.y - ball.radius, ball.radius * 2, ball.radius * 2);
+        async function getServerResponse(userMessage) {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userMessage }),
+            });
+
+            const responseData = await response.json();
+            return responseData.reply;
         }
-
-        function moveBall() {
-            ball.x += ball.dx;
-            ball.y += ball.dy;
-
-            // Kollision med väggarna
-            if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
-                ball.dx = -ball.dx;
-            }
-
-            if (ball.y - ball.radius < 0) {
-                ball.dy = -ball.dy;
-            }
-
-            // Kollision med spelaren
-            if (
-                ball.x + ball.radius > player.x &&
-                ball.x - ball.radius < player.x + player.width &&
-                ball.y + ball.radius > player.y
-            ) {
-                ball.dy = -ball.dy;
-            }
-
-            // Om bollen går under spelaren
-            if (ball.y + ball.radius > canvas.height) {
-                resetBall();
-            }
-        }
-
-        function resetBall() {
-            ball.x = canvas.width / 2;
-            ball.y = canvas.height - 120;
-            ball.dx = 2;
-            ball.dy = -2;
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawPlayer();
-            drawBall();
-            moveBall();
-            requestAnimationFrame(draw);
-        }
-
-        document.addEventListener('keydown', function(event) {
-            // Flytta spelaren med piltangenterna
-            if (event.key === 'ArrowLeft' && player.x > 0) {
-                player.x -= 10;
-            } else if (event.key === 'ArrowRight' && player.x < canvas.width - player.width) {
-                player.x += 10;
-            }
-        });
-
-        draw(); // Starta spelet
     </script>
 </body>
 </html>
+
