@@ -8,9 +8,21 @@
         body {
             margin: 0;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #87CEEB;
         }
 
         canvas {
+            border: 5px solid #8B4513;
+            background-color: #32CD32;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
             display: block;
         }
     </style>
@@ -19,38 +31,37 @@
     <canvas id="gameCanvas" width="800" height="600"></canvas>
 
     <script>
-        // JavaScript-kod för basketkastningsspelet
         var canvas = document.getElementById('gameCanvas');
         var ctx = canvas.getContext('2d');
 
-        var basket = {
+        var player = {
             x: canvas.width / 2 - 30,
-            y: canvas.height - 60,
+            y: canvas.height - 100,
             width: 60,
-            height: 30
+            height: 100,
+            image: new Image()
         };
 
         var ball = {
             x: canvas.width / 2,
-            y: canvas.height - 70,
-            radius: 10,
-            color: 'red',
+            y: canvas.height - 120,
+            radius: 20,
+            color: '#FFD700',
             speed: 5,
             dx: 2,
-            dy: -2
+            dy: -2,
+            image: new Image()
         };
 
-        function drawBasket() {
-            ctx.fillStyle = 'orange';
-            ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
+        player.image.src = 'basket_player.png'; // Ange sökvägen till din basket spelare bild
+        ball.image.src = 'basketball.png'; // Ange sökvägen till din basketboll bild
+
+        function drawPlayer() {
+            ctx.drawImage(player.image, player.x, player.y, player.width, player.height);
         }
 
         function drawBall() {
-            ctx.beginPath();
-            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-            ctx.fillStyle = ball.color;
-            ctx.fill();
-            ctx.closePath();
+            ctx.drawImage(ball.image, ball.x - ball.radius, ball.y - ball.radius, ball.radius * 2, ball.radius * 2);
         }
 
         function moveBall() {
@@ -66,16 +77,16 @@
                 ball.dy = -ball.dy;
             }
 
-            // Kollision med korgen
+            // Kollision med spelaren
             if (
-                ball.x + ball.radius > basket.x &&
-                ball.x - ball.radius < basket.x + basket.width &&
-                ball.y + ball.radius > basket.y
+                ball.x + ball.radius > player.x &&
+                ball.x - ball.radius < player.x + player.width &&
+                ball.y + ball.radius > player.y
             ) {
                 ball.dy = -ball.dy;
             }
 
-            // Om bollen går under korgen
+            // Om bollen går under spelaren
             if (ball.y + ball.radius > canvas.height) {
                 resetBall();
             }
@@ -83,25 +94,25 @@
 
         function resetBall() {
             ball.x = canvas.width / 2;
-            ball.y = canvas.height - 70;
+            ball.y = canvas.height - 120;
             ball.dx = 2;
             ball.dy = -2;
         }
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawBasket();
+            drawPlayer();
             drawBall();
             moveBall();
             requestAnimationFrame(draw);
         }
 
         document.addEventListener('keydown', function(event) {
-            // Flytta korgen med piltangenterna
-            if (event.key === 'ArrowLeft' && basket.x > 0) {
-                basket.x -= 10;
-            } else if (event.key === 'ArrowRight' && basket.x < canvas.width - basket.width) {
-                basket.x += 10;
+            // Flytta spelaren med piltangenterna
+            if (event.key === 'ArrowLeft' && player.x > 0) {
+                player.x -= 10;
+            } else if (event.key === 'ArrowRight' && player.x < canvas.width - player.width) {
+                player.x += 10;
             }
         });
 
