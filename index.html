@@ -3,90 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basket Skott Hemsida</title>
+    <title>Basketkastningsspel</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
+            margin: 0;
+            overflow: hidden;
         }
 
-        h1, h2 {
-            text-align: center;
-        }
-
-        form {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        label {
-            margin-right: 10px;
-        }
-
-        input, button {
-            padding: 5px;
-        }
-
-        #recordShot {
+        canvas {
             display: block;
-            margin: 20px auto;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        #leaderboard {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-        }
-
-        #leaderboard li {
-            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Välkommen till Basket Skott Hemsida</h1>
-
-    <!-- Registrering -->
-    <form id="registrationForm">
-        <label for="username">Användarnamn:</label>
-        <input type="text" id="username" required>
-        <button type="submit">Registrera</button>
-    </form>
-
-    <!-- Skottinspelning -->
-    <button id="recordShot">Spela in Skott</button>
-
-    <!-- Leaderboard -->
-    <h2>Leaderboard</h2>
-    <ol id="leaderboard"></ol>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
 
     <script>
-        // JavaScript-kod för att hantera registrering, skottinspelning och leaderboard
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var username = document.getElementById('username').value;
-            // Implementera kod för att hantera användarregistrering
+        // JavaScript-kod för basketkastningsspelet
+        var canvas = document.getElementById('gameCanvas');
+        var ctx = canvas.getContext('2d');
+
+        var basket = {
+            x: canvas.width / 2 - 30,
+            y: canvas.height - 60,
+            width: 60,
+            height: 30
+        };
+
+        var ball = {
+            x: canvas.width / 2,
+            y: canvas.height - 70,
+            radius: 10,
+            color: 'red',
+            speed: 5,
+            dx: 2,
+            dy: -2
+        };
+
+        function drawBasket() {
+            ctx.fillStyle = 'orange';
+            ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
+        }
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fillStyle = ball.color;
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function moveBall() {
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            // Kollision med väggarna
+            if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
+                ball.dx = -ball.dx;
+            }
+
+            if (ball.y - ball.radius < 0) {
+                ball.dy = -ball.dy;
+            }
+
+            // Kollision med korgen
+            if (
+                ball.x + ball.radius > basket.x &&
+                ball.x - ball.radius < basket.x + basket.width &&
+                ball.y + ball.radius > basket.y
+            ) {
+                ball.dy = -ball.dy;
+            }
+
+            // Om bollen går under korgen
+            if (ball.y + ball.radius > canvas.height) {
+                resetBall();
+            }
+        }
+
+        function resetBall() {
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height - 70;
+            ball.dx = 2;
+            ball.dy = -2;
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBasket();
+            drawBall();
+            moveBall();
+            requestAnimationFrame(draw);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            // Flytta korgen med piltangenterna
+            if (event.key === 'ArrowLeft' && basket.x > 0) {
+                basket.x -= 10;
+            } else if (event.key === 'ArrowRight' && basket.x < canvas.width - basket.width) {
+                basket.x += 10;
+            }
         });
 
-        document.getElementById('recordShot').addEventListener('click', function() {
-            // Implementera kod för att hantera skottinspelning
-        });
-
-        // Exempel på leaderboard-data (ersätt med din databaslogik)
-        var leaderboardData = [
-            { username: 'Användare1', score: 10 },
-            { username: 'Användare2', score: 8 },
-            { username: 'Användare3', score: 5 }
-        ];
-
-        var leaderboardElement = document.getElementById('leaderboard');
-        leaderboardData.forEach(function(entry) {
-            var li = document.createElement('li');
-            li.textContent = entry.username + ': ' + entry.score + ' poäng';
-            leaderboardElement.appendChild(li);
-        });
+        draw(); // Starta spelet
     </script>
 </body>
 </html>
