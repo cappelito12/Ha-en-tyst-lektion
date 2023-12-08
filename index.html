@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basket Skott Hemsida</title>
+    <style>
+        /* Lägg till din CSS-styling här */
+    </style>
+</head>
+<body>
+    <h1>Välkommen till Basket Skott Hemsida</h1>
+
+    <!-- Registrering -->
+    <form id="registrationForm">
+        <label for="username">Användarnamn:</label>
+        <input type="text" id="username" required>
+        <button type="submit">Registrera</button>
+    </form>
+
+    <!-- Skottinspelning -->
+    <button id="recordShot">Spela in Skott</button>
+
+    <!-- Leaderboard -->
+    <h2>Leaderboard</h2>
+    <ol id="leaderboard"></ol>
+
+    <script>
+        // JavaScript-kod för att hantera registrering, skottinspelning och leaderboard
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            // Implementera kod för att hantera användarregistrering
+        });
+
+        document.getElementById('recordShot').addEventListener('click', function() {
+            // Implementera kod för att hantera skottinspelning
+        });
+
+        // Exempel på leaderboard-data (ersätt med din databaslogik)
+        var leaderboardData = [
+            { username: 'Användare1', score: 10 },
+            { username: 'Användare2', score: 8 },
+            { username: 'Användare3', score: 5 }
+        ];
+
+        var leaderboardElement = document.getElementById('leaderboard');
+        leaderboardData.forEach(function(entry) {
+            var li = document.createElement('li');
+            li.textContent = entry.username + ': ' + entry.score + ' poäng';
+            leaderboardElement.appendChild(li);
+        });
+    </script>
+</body>
+</html>
