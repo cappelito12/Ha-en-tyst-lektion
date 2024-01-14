@@ -1,49 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
+    <title>Team Kvist Go-Kart</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1em;
+            margin: 0 1em;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        section {
+            padding: 2em;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1>Chatbot</h1>
-        <div id="chat-container"></div>
-        <input type="text" id="user-input" placeholder="Skriv ditt meddelande...">
-        <button onclick="sendMessage()">Skicka</button>
-    </div>
 
-    <script>
-        async function sendMessage() {
-            const userMessage = document.getElementById('user-input').value;
-            const chatContainer = document.getElementById('chat-container');
+    <header>
+        <h1>Team Kvist Go-Kart</h1>
+    </header>
 
-            // Visa användarens meddelande i chattfönstret
-            chatContainer.innerHTML += `<p><strong>Du:</strong> ${userMessage}</p>`;
+    <nav>
+        <a href="#about">Om oss</a>
+        <a href="evenemang.html">Evenemang</a>
+        <a href="results.html">Resultat</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="index.html">hem</a>
+    </nav>
 
-            // Anropa servern för att få ett svar från OpenAI
-            const response = await getServerResponse(userMessage);
+    <section id="about">
+        <h2>Välkommen till Team Kvist Go-Kart!</h2>
+        <p>Vi är ett passionerat go-kartteam som älskar att tävla och ha kul på banan.</p>
+    </section>
 
-            // Visa botens svar i chattfönstret
-            chatContainer.innerHTML += `<p><strong>Boten:</strong> ${response}</p>`;
+    <section id="events">
+        <h2>Kommande evenemang</h2>
+        <p>Håll dig uppdaterad om våra kommande tävlingar och evenemang.</p>
+    </section>
 
-            // Rensa användarens inputfält
-            document.getElementById('user-input').value = '';
-        }
+    <section id="results">
+        <h2>Senaste resultat</h2>
+        <p>Se våra senaste tävlingsresultat och prestationer.</p>
+    </section>
 
-        async function getServerResponse(userMessage) {
-            const response = await fetch('/api/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: userMessage }),
-            });
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <p>Kontakta oss för mer information och samarbeten.</p>
+    </section>
 
-            const responseData = await response.json();
-            return responseData.reply;
-        }
-    </script>
+    <footer>
+        <p>&copy; 2023 Team Kvist Go-Kart. Alla rättigheter förbehållna.</p>
+    </footer>
+
 </body>
 </html>
-
