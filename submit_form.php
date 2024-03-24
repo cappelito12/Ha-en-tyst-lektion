@@ -1,18 +1,26 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $message = $_POST["message"];
-
-    // Anpassa dessa uppgifter enligt dina behov
-    $to = "casperkvist12@gmail.com";
-    $subject = "Nytt meddelande från $name";
+    // Hämta formulärdata
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+    
+    // Skapa e-postmeddelandet
+    $to = "example@example.com"; // Ändra till rätt e-postadress dit meddelandet ska skickas
+    $subject = "Meddelande från Team Kvist Go-Kart";
+    $msg = "Namn: $name\n";
+    $msg .= "E-post: $email\n\n";
+    $msg .= "Meddelande:\n$message\n";
+    
+    // Skicka e-postmeddelandet
     $headers = "From: $email";
 
-    // Skicka e-post
-    mail($to, $subject, $message, $headers);
-
-    // Omdirigera till en bekräftelsessida
-    header("Location: confirmation.html");
+    if (mail($to, $subject, $msg, $headers)) {
+        echo "Ditt meddelande har skickats!";
+    } else {
+        echo "Något gick fel. Försök igen senare.";
+    }
+} else {
+    echo "Ogiltig förfrågan";
 }
 ?>
