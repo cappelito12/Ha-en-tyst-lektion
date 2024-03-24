@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Hämta formulärdata
+     Hämta formulärdata
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
@@ -9,8 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $to = "casperkvist12@gmail.com"; // Din e-postadress här
     $subject = "Meddelande från Team Kvist Go-Kart";
     $msg = "Namn: $name\n";
-    $msg .= "E-post: $email\n\n";
-    $msg .= "Meddelande:\n$message\n";
+    $msg = "E-post: $email\n\n";
+    $msg = "Meddelande:\n$message\n";
     
     // Skicka e-postmeddelandet
     $headers = "From: $email";
