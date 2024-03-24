@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     Hämta formulärdata
+     //Hämta formulärdata
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
