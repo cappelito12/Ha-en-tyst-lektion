@@ -43,21 +43,20 @@
             text-align: center;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        .result {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+        .result h4 {
+            margin-top: 0;
         }
 
-        th {
-            background-color: #333;
-            color: white;
+        .result p {
+            margin: 0;
         }
     </style>
 </head>
@@ -68,287 +67,95 @@
     </header>
 
     <nav>
-        <a href="om_oss.html">Om oss</a>
         <a href="evenemang.html">Evenemang</a>
         <a href="#results">Resultat</a>
+        <a href="kontakt.html">Kontakt</a>
         <a href="index.html">Hem</a>
     </nav>
 
-    <section id="results-2024">
-        <h2>Resultat 2024</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tävling</th>
-                    <th>Förare</th>
-                    <th>Klass</th>
-                    <th>Bana</th>
-                    <th>Placering</th>
-                    <th>Best Place</th>
-                    <th>Datum</th>
-                    <th>Avg Place</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Lägg till rader för 2024 -->
-            </tbody>
-        </table>
-    </section>
-
-    <section id="series-results-2024">
-        <h2>Serie Resultat 2024</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Serie</th>
-                    <th>Förare</th>
-                    <th>Klass</th>
-                    <th>Placering</th>
-                    <th>Best Place</th>
-                    <th>Avg Place</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Lägg till rader för serie resultat 2024 här -->
-            </tbody>
-        </table>
-    </section>
-
-    <section id="results-2023">
+    <section id="results">
         <h2>Resultat 2023</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tävling</th>
-                    <th>Förare</th>
-                    <th>Klass</th>
-                    <th>Bana</th>
-                    <th>Placering</th>
-                    <th>Best Place</th>
-                    <th>Datum</th>
-                    <th>Avg Place</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>mkr 1</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>SMK Västerås Karting</td>
-                    <td>5:a</td>
-                    <td>3:a</td>
-                    <td>2023-05-07</td>
-                    <td>4:a</td>
-                </tr>
-                <tr>
-                    <td>mkr 1</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>SMK Västerås Karting</td>
-                    <td>18:de</td>
-                    <td>8:a</td>
-                    <td>2023-05-06</td>
-                    <td>16:de</td>
-                </tr>
-                <tr>
-                    <td>mkr 2</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>Borlänge MK</td>
-                    <td>27:de "krashade"</td>
-                    <td>4:a</td>
-                    <td>2023-05-21</td>
-                    <td>12:de</td>
-                </tr>
-                <tr>
-                    <td>mkr 2</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>Borlänge MK</td>
-                    <td>21:de</td>
-                    <td>17:de</td>
-                    <td>2023-05-20</td>
-                    <td>19:de</td>
-                </tr>
-                <tr>
-                    <td>mkr 3</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>Järfälla MK</td>
-                    <td>7:de</td>
-                    <td>4:de</td>
-                    <td>2023-06-03</td>
-                    <td>5:a</td>
-                </tr>
-                <tr>
-                    <td>mkr 3</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>Järfälla MK</td>
-                    <td>20:de</td>
-                    <td>17:de</td>
-                    <td>2023-06-04</td>
-                    <td>"resultat saknas"</td>
-                </tr>
-                <tr>
-                    <td>mkr 4</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>Södertälje KRC</td>
-                    <td>8:a</td>
-                    <td>3:a</td>
-                    <td>2023-06-18</td>
-                    <td>9:a</td>
-                </tr>
-                <tr>
-                    <td>mkr 4</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>Södertälje KRC</td>
-                    <td>8:a</td>
-                    <td>8:a</td>
-                    <td>2023-06-17</td>
-                    <td>12:a</td>
-                </tr>
-                <tr>
-                    <td>mkr 5</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>SMK Västerås Karting</td>
-                    <td>8:a</td>
-                    <td>4:a</td>
-                    <td>2023-08-06</td>
-                    <td>6:a</td>
-                </tr>
-                <tr>
-                    <td>mkr 5</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>SMK Västerås Karting</td>
-                    <td>30:de</td>
-                    <td>12:a</td>
-                    <td>2023-08-05</td>
-                    <td>18:de</td>
-                </tr>
-                <tr>
-                    <td>mkr 6</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>Katrineholms MK</td>
-                    <td>10:a</td>
-                    <td>2:a</td>
-                    <td>2023-08-20</td>
-                    <td>5:a</td>
-                </tr>
-                <tr>
-                    <td>mkr 6</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>Katrineholms MK</td>
-                    <td>18:a</td>
-                    <td>10:a</td>
-                    <td>2023-08-19</td>
-                    <td>15:de</td>
-                </tr>
-                <tr>
-                    <td>mkr 7</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>Linköpings MS</td>
-                    <td>5:a</td>
-                    <td>2:a</td>
-                    <td>2023-09-03</td>
-                    <td>3:a</td>
-                </tr>
-                <tr>
-                    <td>mkr 7</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>Linköpings MS</td>
-                    <td>25:a</td>
-                    <td>10:a</td>
-                    <td>2023-09-02</td>
-                    <td>15:de</td>
-                </tr>
-                <tr>
-                    <td>mkr 8</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>Skövde MK</td>
-                    <td>8:a</td>
-                    <td>1:a</td>
-                    <td>2023-09-17</td>
-                    <td>9:a</td>
-                </tr>
-                <tr>
-                    <td>mkr 8</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>Skövde MK</td>
-                    <td>26:de</td>
-                    <td>9:a</td>
-                    <td>2023-09-16</td>
-                    <td>18:de</td>
-                </tr>
-                <tr>
-                    <td>Höstrusket</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>SMK Västerås Karting</td>
-                    <td>10:a</td>
-                    <td>5:a</td>
-                    <td>2023-10-01</td>
-                    <td>12:a</td>
-                </tr>
-                <tr>
-                    <td>Höstrusket</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>SMK Västerås Karting</td>
-                    <td>15:de</td>
-                    <td>6:a</td>
-                    <td>2023-09-30</td>
-                    <td>11::a</td>
-                </tr>
-                <!-- Lägg till fler rader för andra resultat 2023 -->
-            </tbody>
-        </table>
-    </section>
 
-    <section id="series-results-2023">
-        <h2>Serie Resultat 2023</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Serie</th>
-                    <th>Förare</th>
-                    <th>Klass</th>
-                    <th>Placering</th>
-                    <th>Best Place</th>
-                    <th>Avg Place</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>mkr 2023</td>
-                    <td>Lucas kvist</td>
-                    <td>micro</td>
-                    <td>16:de</td>
-                    <td>8:a</td>
-                    <td>21:de</td>
-                </tr>
-                <tr>
-                    <td>mkr 2023</td>
-                    <td>Casper kvist</td>
-                    <td>mini</td>
-                    <td>6:a</td>
-                    <td>5:a</td>
-                    <td>9:de</td>
-                </tr>
-                <!-- Lägg till rader för serie resultat 2023 här -->
-            </tbody>
-        </table>
+        <!-- Resultatlista -->
+        <div class="result">
+            <h4>mkr 1 - Casper kvist - mini - SMK Västerås Karting</h4>
+            <p>Placering: 5:a, Best Place: 3:a, Datum: 2023-05-07, Avg Place: 4:a</p>
+        </div>
+        <div class="result">
+            <h4>mkr 1 - Lucas kvist - micro - SMK Västerås Karting</h4>
+            <p>Placering: 18:de, Best Place: 8:a, Datum: 2023-05-06, Avg Place: 16:de</p>
+        </div>
+        <div class="result">
+            <h4>mkr 2 - Casper kvist - mini - Borlänge MK</h4>
+            <p>Placering: 27:de "krashade", Best Place: 4:a, Datum: 2023-05-21, Avg Place: 12:de</p>
+        </div>
+        <div class="result">
+            <h4>mkr 2 - Lucas kvist - micro - Borlänge MK</h4>
+            <p>Placering: 21:de, Best Place: 17:de, Datum: 2023-05-20, Avg Place: 19:de</p>
+        </div>
+<div class="result">
+            <h4>mkr 3 - Casper kvist - mini - Järfälla MK</h4>
+            <p>Placering: 7:de, Best Place: 4:de, Datum: 2023-06-03, Avg Place: 5:a</p>
+        </div>
+        <div class="result">
+            <h4>mkr 3 - Lucas kvist - micro - Järfälla MK</h4>
+            <p>Placering: 20:de, Best Place: 17:de, Datum: 2023-06-04, Avg Place: "resultat saknas"</p>
+        </div>
+        <div class="result">
+            <h4>mkr 4 - Casper kvist - mini - Södertälje KRC</h4>
+            <p>Placering: 8:a, Best Place: 3:a, Datum: 2023-06-18, Avg Place: 9:a</p>
+        </div>
+        <div class="result">
+            <h4>mkr 4 - Lucas kvist - micro - Södertälje KRC</h4>
+            <p>Placering: 8:a, Best Place: 8:a, Datum: 2023-06-17, Avg Place: 12:a</p>
+        </div>
+<div class="result">
+            <h4>mkr 5 - Casper kvist - mini - SMK Västerås Karting</h4>
+            <p>Placering: 8:a, Best Place: Saknas, Datum: Saknas, Avg Place: Saknas</p>
+        </div>
+        <div class="result">
+            <h4>mkr 5 - Lucas kvist - micro - SMK Västerås Karting</h4>
+            <p>Placering: 30:de, Best Place: 12:a, Datum: 2023-08-05, Avg Place: 18:de</p>
+        </div>
+        <div class="result">
+            <h4>mkr 6 - Casper kvist - mini - Katrineholms MK</h4>
+            <p>Placering: 10:a, Best Place: 2:a, Datum: 2023-08-20, Avg Place: 5:a</p>
+        </div>
+        <div class="result">
+            <h4>mkr 6 - Lucas kvist - micro - Katrineholms MK</h4>
+            <p>Placering: 18:a, Best Place: 10:a, Datum: 2023-08-19, Avg Place: 15:de</p>
+        </div>
+        <div class="result">
+            <h4>mkr 7 - Casper kvist - mini - Linköpings MS</h4>
+            <p>Placering: 5:a, Best Place: 2:a, Datum: 2023-09-03, Avg Place: 3:a</p>
+        </div>
+        <div class="result">
+            <h4>mkr 7 - Lucas kvist - micro - Linköpings MS</h4>
+            <p>Placering: 25:a, Best Place: 10:a, Datum: 2023-09-02, Avg Place: 15:de</p>
+        </div>
+        <div class="result">
+            <h4>mkr 8 - Casper kvist - mini - Skövde MK</h4>
+            <p>Placering: 8:a, Best Place: 1:a, Datum: 2023-09-17, Avg Place: 9:a</p>
+        </div>
+        <div class="result">
+            <h4>mkr 8 - Lucas kvist - micro - Skövde MK</h4>
+            <p>Placering: 26:de, Best Place: 9:a, Datum: 2023-09-16, Avg Place: 18:de</p>
+        </div>
+        <div class="result">
+            <h4>Höstrusket - Casper kvist - mini - SMK Västerås Karting</h4>
+            <p>Placering: 10:a, Best Place: 5:a, Datum: 2023-10-01, Avg Place: 12:a</p>
+        </div>
+        <div class="result">
+            <h4>Höstrusket - Lucas kvist - micro - SMK Västerås Karting</h4>
+            <p>Placering: 15:de, Best Place: 6:a, Datum: 2023-09-30, Avg Place: 11:a</p>
+        </div>
+        <!-- Resten av resultaten här -->
+        <!-- Fortsätt med resten av resultaten här -->
+
     </section>
+ <section id="results">
+        <h2>Resultat 2024</h2></section>
+
 
     <footer>
         <p>&copy; 2023 Team Kvist Go-Kart. Alla rättigheter förbehållna.</p>
@@ -356,3 +163,7 @@
 
 </body>
 </html>
+
+
+
+
