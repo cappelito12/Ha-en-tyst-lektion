@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST['message'];
     
     // Skapa e-postmeddelandet
-    $to = "example@example.com"; // Ändra till rätt e-postadress dit meddelandet ska skickas
+    $to = "casperkvist12@gmail.com"; // Din e-postadress här
     $subject = "Meddelande från Team Kvist Go-Kart";
     $msg = "Namn: $name\n";
     $msg .= "E-post: $email\n\n";
